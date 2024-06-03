@@ -1,0 +1,208 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+:root {
+    /**
+     * colors
+     */
+
+    --united-nations-blue: hsl(214, 56%, 58%);
+    --bright-navy-blue: hsl(214, 57%, 51%);
+    --spanish-gray: hsl(0, 0%, 60%);
+    --black-coral: hsl(225, 8%, 42%);
+    --oxford-blue: hsl(208, 97%, 12%);
+    --yale-blue: hsl(214, 72%, 33%);
+    --blue-ncs: hsl(197, 100%, 36%);
+    --gunmetal: hsl(206, 34%, 20%);
+    --gainsboro: hsl(0, 0%, 88%);
+    --cultured: hsl(0, 0%, 98%);
+    --white: hsl(0, 0%, 100%);
+    --black: hsl(0, 0%, 0%);
+    --onyx: hsl(0, 0%, 25%);
+    --jet: hsl(0, 0%, 20%);
+
+    /**
+     * typography
+     */
+
+    --ff-poppins: "Poppins", sans-serif;
+    --ff-montserrat: "Montserrat", sans-serif;
+
+    --fs-1: calc(20px + 3.5vw);
+    --fs-2: calc(18px + 1.6vw);
+    --fs-3: calc(16px + 0.45vw);
+    --fs-4: 15px;
+    --fs-5: 14px;
+    --fs-6: 13px;
+    --fs-7: 12px;
+    --fs-8: 11px;
+
+    --fw-500: 500;
+    --fw-600: 600;
+    --fw-700: 700;
+    --fw-800: 800;
+
+    /**
+     * transition
+     */
+
+    --transition: 0.25s ease-in-out;
+
+    /**
+     * spacing
+     */
+
+    --section-padding: 60px;
+
+    /**
+     * border-radius
+     */
+
+    --radius-15: 15px;
+    --radius-25: 25px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "poppins", sans-serif;
+}
+
+.login-form {
+    position: relative;
+    min-height: 100vh;
+    z-index: 0;
+    background-image: url("../img/head1\ \(2\).jpg");
+    padding: 30px;
+    justify-content: center;
+    display: grid;
+    font-family: "poppins", sans-serif;
+
+    grid-template-rows: 1fr auto 1fr;
+    align-items: center;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.login-form h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #fff;
+    font-family: "poppins", sans-serif;
+}
+.login-form h2 {
+    line-height: 40px;
+    margin-bottom: 5px;
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--gunmetal);
+    text-align: center;
+}
+.login-form .main {
+    position: relative;
+    display: flex;
+    margin: 30px 0;
+}
+.content {
+    flex-basis: 50%;
+    padding: 3em 3em;
+    background: #fff;
+    box-shadow: 2px 9px 49px -17px rgba(0, 0, 0, 0.1);
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+.form-img {
+    flex-basis: 50%;
+    background: #dfe5ea;
+    background-size: cover;
+    padding: 40px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    align-items: center;
+    display: grid;
+}
+.form-img img {
+    max-width: 100%;
+}
+p {
+    color: #666;
+    font-size: 16px;
+    line-height: 25px;
+    opacity: 0.6;
+    text-align: center;
+}
+.btn,
+button,
+input {
+    border-radius: 35px;
+}
+.btn:hover,
+button:hover {
+    color: #fff;
+    transition: 0.5s ease;
+}
+a {
+    text-decoration: none;
+}
+.login-form form {
+    margin: 30px 0;
+}
+.login-form input {
+    outline: none;
+    margin-bottom: 15px;
+    font-stretch: 16px;
+    color: #000;
+    text-align: left;
+    padding: 14px 20px;
+    width: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+    border: none;
+    transition: 0.3s ease;
+    border: 1px solid var(--bright-navy-blue);
+}
+.login-form input:focus {
+    background: transparent;
+}
+
+.login-form button {
+    font-size: 18px;
+    color: #fff;
+    width: 100%;
+    background: var(--gunmetal);
+    border: none;
+    padding: 14px 15px;
+    font-weight: 600;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+p.account a {
+    color: #4e34b6;
+}
+p.account a:hover {
+    text-decoration: underline;
+}
+@media (max-width: 736px) {
+    .login-form .main {
+        flex-direction: column;
+    }
+    .login-form form {
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+    .form-img {
+        border-radius: 0;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        order: 2;
+    }
+    .content {
+        order: 1;
+        border-radius: 0;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+}
