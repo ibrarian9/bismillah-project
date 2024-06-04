@@ -28,15 +28,11 @@
         <div class="contentBx">
             <h2 class="titleText">Makna Logo PT. Mandiri Sertifikasi Internasional</h2>
             <p class="title-text">
-                <li>1. MSI, Merupakan singkatan dari lembaga Mandiri Sertifikasi Internasional </li>
-                <li>2. Warna kuning melambangkan emas yang memaknai standar kualitas yang tinggi. Warna kuning meningkatkan komitmen kita terhadap kualitas dalam setiap aspek layanan sertifikasi yang kami tawarkan.</li>
-                <li>3. Lambang bumi melambangkan dunia global dan internasional memaknai sertifikasi yang ditawarkan oleh PT. MSI sudah jangkauan tingkat internasional dan mencerminkan kemampuan perusahaan untuk memberikan layanan sertifikasi di berbagai negara dan wilayah di seluruh dunia</li>
-                <li>4. Diayomi oleh tumbuhan padi dimana agar PT. Mandiri Sertifikasi Internasional ini tumbuh secara bersama-sama dan diayomi oleh dunia.</li>
-
+                {!! $visiMisi->maknalogo !!}
             </p>
         </div>
         <div class="imgBxi">
-            <img src="img/logo.png" alt="" class="fitBg">
+            <img src="{{ asset("storage/logo/".$visiMisi->logo) }}" alt="" class="fitBg">
         </div>
     </section>
 @endsection

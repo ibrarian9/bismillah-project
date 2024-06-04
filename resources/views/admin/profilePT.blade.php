@@ -10,7 +10,7 @@
                 </span>
             </div>
             <div class="formulir" id="formulir">
-                <form action="{{ route("updateProfile", $visiMisi->id) }}" method="post">
+                <form action="{{ route("updateProfile", $visiMisi->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div style="display: flex; flex-direction: column">
                         <label for="visi">Visi</label>
@@ -22,16 +22,10 @@
                     </div>
                     <div style="display: flex; flex-direction: column; margin-top: 10px">
                         <label for="makna">Makna Logo</label>
-                        <input type="text" name="makna" id="content"/>
+                        <input type="text" name="maknalogo" id="content" value="{{ $visiMisi->maknalogo }}"/>
                     </div>
-                    <div class="drop-zone">
-                            <span class="arrow-up">
-                                <i class="fa-solid fa-cloud-arrow-up"></i>
-                            </span>
-                            <span class="text">
-                                Upload Logo
-                            </span>
-                        <input type="file" name="foto_logo" class="file-input" accept="image/*">
+                    <div class="user-details">
+                        <input type="file" name="logo" class="file-input" accept="image/*">
                     </div>
                     <button type="submit">Upload</button>
                     <button>Batal</button>
@@ -48,6 +42,13 @@
                 <h2>MISI</h2>
                 <div id="content">
                   {{ $visiMisi->misi }}
+                </div>
+            </div>
+
+            <div class="misi">
+                <h2>MAKNA LOGO</h2>
+                <div id="content">
+                  {!! $visiMisi->maknalogo !!}
                 </div>
             </div>
 

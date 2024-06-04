@@ -11,7 +11,9 @@ class VisiMisi extends Model
 
     protected $table = 'visimisi';
     protected $fillable = [
-      "visi",
-      "misi"
+        "visi",
+        "misi",
+        "maknalogo",
+        "logo"
     ];
 }

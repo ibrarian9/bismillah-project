@@ -15,8 +15,9 @@ class DashboardController extends Controller
     {
         $berita = Berita::all();
         $jumlahBerita = $berita->count();
+        $jumlahGallery = Gallery::all()->count();
         $title = 'Dashboard';
-        return view('admin/dashboard', compact('berita', 'title', 'jumlahBerita'));
+        return view('admin/dashboard', compact('berita', 'title', 'jumlahBerita', 'jumlahGallery'));
     }
 
     public function editProfile(): View
@@ -28,12 +29,21 @@ class DashboardController extends Controller
 
     public function updateProfile(Request $req, $id): RedirectResponse
     {
-        $req->validate([
+        $validate = $req->validate([
             "visi" => "required",
             "misi" => "required",
+            "maknalogo" => "required",
+            "logo" => "required|image|mimes:jpeg,png,jpg,gif,svg",
         ]);
+
+        if ($req->hasFile("logo")) {
+            $fotoName = time().".".$req->logo->extension();
+            $req->logo->storeAs("public/logo", $fotoName);
+            $validate["logo"] = $fotoName;
+        }
+
         $visiMisi = VisiMisi::findOrFail($id);
-        $visiMisi->update($req->all());
+        $visiMisi->update($validate);
         return redirect()->route("profilePT");
     }
 

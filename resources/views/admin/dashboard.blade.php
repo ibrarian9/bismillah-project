@@ -34,7 +34,7 @@
 
                 <div class="card">
                     <div class="card-head">
-                        <h2>8</h2>
+                        <h2>{{$jumlahGallery}}</h2>
                         <span class="las la-shopping-cart"></span>
                     </div>
                     <div class="card-progress">

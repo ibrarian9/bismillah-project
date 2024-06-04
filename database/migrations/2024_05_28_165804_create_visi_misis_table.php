@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('visimisi', function (Blueprint $table) {
             $table->id();
-            $table->string('visi');
-            $table->string('misi');
+            $table->string('visi', 500);
+            $table->string('misi', 500);
+            $table->text('maknalogo');
+            $table->text('logo');
             $table->timestamps();
         });
     }

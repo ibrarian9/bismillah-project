@@ -6,6 +6,7 @@ use App\Models\Berita;
 use App\Models\Kategori;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class AdminController extends Controller
@@ -24,19 +25,27 @@ class AdminController extends Controller
             'judul' => 'required|max:50',
             'author' => 'required|max:50',
             'isi_berita' => 'required',
-            'foto_berita' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'foto_berita' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'id_kategori' => 'required',
             'tanggal_terbit' => 'required|date',
         ]);
 
-        if ($req->hasFile('foto_berita')) {
-            $imageName = time().".".$req->foto_berita->extension();
-            $req->foto_berita->storeAs('public/foto_berita', $imageName);
-            $validate['foto_berita'] = $imageName;
-        }
+        DB::beginTransaction();
 
-        Berita::create($validate);
-        return redirect()->route("berita-admin.index")->with("success", "Berita berhasil ditambahkan");
+        try {
+            if ($req->hasFile('foto_berita')) {
+                $imageName = time().".".$req->foto_berita->extension();
+                $req->foto_berita->storeAs('public/foto_berita', $imageName);
+                $validate['foto_berita'] = $imageName;
+            }
+
+            Berita::create($validate);
+            DB::commit();
+            return redirect()->route("berita-admin.index")->with("pesan", "Berita berhasil ditambahkan");
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->route("berita-admin.index")->with("pesan", $th->getMessage());
+        }
     }
 
     public function update(Request $req, Berita $berita): RedirectResponse

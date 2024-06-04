@@ -8,10 +8,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 
 class UsersController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         return view('login', [
             'title' => 'Login'
